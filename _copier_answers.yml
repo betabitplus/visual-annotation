@@ -18,7 +18,6 @@ e2e_slices:
     path: tests/__PACKAGE_NAME__/e2e/mask_annotation
   - name: page-element-compatibility
     path: tests/__PACKAGE_NAME__/e2e/page_element_compatibility
-env_file_default: $HOME/researcher-local/.env
 env_prefix: VISUAL_ANNOTATION
 error_class_name: VisualAnnotationError
 github_owner: betabitplus
