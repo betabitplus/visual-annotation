@@ -1565,7 +1565,7 @@ wheels = [
 [[package]]
 name = "py-lib-runtime"
 version = "0.11.0"
-source = { git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-runtime&rev=v0.28.26#9d4383e63b0a7b757346685421101ee22879e82d" }
+source = { git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-runtime&rev=v0.28.27#3093e3e574a018f9f0fb3b14b563e8c003d4058a" }
 dependencies = [
     { name = "structlog" },
 ]
@@ -1573,7 +1573,7 @@ dependencies = [
 [[package]]
 name = "py-lib-tooling"
 version = "0.26.24"
-source = { git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-tooling&rev=v0.28.26#9d4383e63b0a7b757346685421101ee22879e82d" }
+source = { git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-tooling&rev=v0.28.27#3093e3e574a018f9f0fb3b14b563e8c003d4058a" }
 dependencies = [
     { name = "copier" },
     { name = "ipython" },
@@ -2449,7 +2449,7 @@ requires-dist = [
     { name = "numpy" },
     { name = "opencv-python", specifier = ">=4.5.5.64" },
     { name = "pillow" },
-    { name = "py-lib-runtime", git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-runtime&rev=v0.28.26" },
+    { name = "py-lib-runtime", git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-runtime&rev=v0.28.27" },
     { name = "supervision" },
 ]
 
@@ -2471,7 +2471,7 @@ dev = [
     { name = "pillow", specifier = ">=12.2" },
     { name = "pip-audit", specifier = ">=2.10.1" },
     { name = "pre-commit", specifier = ">=4.6.0" },
-    { name = "py-lib-tooling", git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-tooling&rev=v0.28.26" },
+    { name = "py-lib-tooling", git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-tooling&rev=v0.28.27" },
     { name = "pyright", specifier = ">=1.1.410" },
     { name = "pytest", specifier = ">=9.1.0" },
     { name = "pytest-cov", specifier = ">=7.1.0" },
