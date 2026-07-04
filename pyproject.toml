@@ -33,10 +33,10 @@ dependencies = [
   "supervision",
 ]
 # --- Project URLs ---
-urls."Bug Tracker" = "https://github.com/betabitplus/visual_annotation/issues"
-urls.Documentation = "https://github.com/betabitplus/visual_annotation/tree/main/docs"
-urls.Homepage = "https://github.com/betabitplus/visual_annotation"
-urls.Repository = "https://github.com/betabitplus/visual_annotation"
+urls."Bug Tracker" = "https://github.com/betabitplus/visual-annotation/issues"
+urls.Documentation = "https://github.com/betabitplus/visual-annotation/tree/main/docs"
+urls.Homepage = "https://github.com/betabitplus/visual-annotation"
+urls.Repository = "https://github.com/betabitplus/visual-annotation"
 
 [dependency-groups]
 dev = [

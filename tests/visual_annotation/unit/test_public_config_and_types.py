@@ -12,7 +12,6 @@ from tests.visual_annotation.support.builders import make_image
 from visual_annotation import (
     AnnotationRequest,
     AnnotationResponse,
-    AnnotatorConfig,
     BboxCoordinatesOutOfRangeError,
     BboxInvalidLengthError,
     BboxInvalidPointsOrderError,
@@ -27,6 +26,7 @@ from visual_annotation import (
     VideoSchema,
     VideoUrlInvalidError,
     VideoUrlSchema,
+    VisualAnnotationConfig,
     VisualBox,
     VisualPoint,
     get_config,
@@ -43,7 +43,7 @@ from visual_annotation._internal.service import (
 
 def test_config_normalizes_color_names() -> None:
     """Verify public config converts string color names to supervision colors."""
-    config = AnnotatorConfig(annotation_color="red", label_color="white")
+    config = VisualAnnotationConfig(annotation_color="red", label_color="white")
 
     assert config.annotation_color == sv.Color.RED
     assert config.label_color == sv.Color.WHITE
@@ -52,7 +52,7 @@ def test_config_normalizes_color_names() -> None:
 def test_config_rejects_invalid_color_name() -> None:
     """Verify config color validation preserves a package-specific error."""
     with pytest.raises(InvalidConfigValueError) as exc_info:
-        AnnotatorConfig(annotation_color="not-a-color")
+        VisualAnnotationConfig(annotation_color="not-a-color")
 
     assert exc_info.value.field == "annotation_color"
 
@@ -60,26 +60,26 @@ def test_config_rejects_invalid_color_name() -> None:
 def test_config_rejects_invalid_numeric_ranges() -> None:
     """Verify public config checks numeric ranges at construction."""
     with pytest.raises(ValueError, match="box_thickness"):
-        AnnotatorConfig(box_thickness=0)
+        VisualAnnotationConfig(box_thickness=0)
     with pytest.raises(ValueError, match="label_text_scale"):
-        AnnotatorConfig(label_text_scale=0.0)
+        VisualAnnotationConfig(label_text_scale=0.0)
     with pytest.raises(ValueError, match="label_text_padding"):
-        AnnotatorConfig(label_text_padding=-1)
+        VisualAnnotationConfig(label_text_padding=-1)
 
 
 def test_config_rejects_boolean_numeric_values() -> None:
     """Verify bools do not pass as numeric config values."""
     with pytest.raises(TypeError, match="box_thickness"):
-        AnnotatorConfig(box_thickness=True)
+        VisualAnnotationConfig(box_thickness=True)
     with pytest.raises(TypeError, match="label_text_scale"):
-        AnnotatorConfig(label_text_scale=True)
+        VisualAnnotationConfig(label_text_scale=True)
     with pytest.raises(TypeError, match="label_text_padding"):
-        AnnotatorConfig(label_text_padding=False)
+        VisualAnnotationConfig(label_text_padding=False)
 
 
 def test_install_config_replaces_public_snapshot() -> None:
     """Installed config snapshots are returned by the public config reader."""
-    config = AnnotatorConfig(box_thickness=5)
+    config = VisualAnnotationConfig(box_thickness=5)
 
     installed = install_config(config)
 
@@ -89,14 +89,14 @@ def test_install_config_replaces_public_snapshot() -> None:
 
 def test_install_config_rejects_unknown_snapshot_type() -> None:
     """Only validated visual annotation configs can be installed."""
-    with pytest.raises(TypeError, match="AnnotatorConfig"):
+    with pytest.raises(TypeError, match="VisualAnnotationConfig"):
         install_config(object())
 
 
 def test_install_config_invalidates_default_service_cache() -> None:
     """Installing config refreshes runtime objects built from old snapshots."""
     old_service = get_default_visual_annotation_service()
-    config = AnnotatorConfig(box_thickness=7)
+    config = VisualAnnotationConfig(box_thickness=7)
 
     install_config(config)
     new_service = get_default_visual_annotation_service()

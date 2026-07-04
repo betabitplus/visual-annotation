@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import pytest
 
-from visual_annotation import AnnotatorConfig, get_config, install_config
+from visual_annotation import VisualAnnotationConfig, get_config, install_config
 
 # =============================================================================
 # Tests
@@ -24,6 +24,6 @@ def test_install_config_rejects_wrong_type() -> None:
 
 def test_get_config_accepts_explicit_snapshot() -> None:
     """Explicit config snapshots can bypass the installed global snapshot."""
-    config = AnnotatorConfig()
+    config = VisualAnnotationConfig()
 
     assert get_config(config) is config

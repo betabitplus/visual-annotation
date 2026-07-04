@@ -34,7 +34,7 @@ class AnnotatorError(VisualAnnotationError):
             self.__cause__ = cause
 
 
-class AnnotatorConfigError(AnnotatorError):
+class VisualAnnotationConfigurationError(AnnotatorError):
     """Raised when annotator configuration cannot be used."""
 
 
@@ -48,7 +48,7 @@ class HandlerMappingError(AnnotatorError):
         super().__init__(f"Failed to map handler '{handler_name}': {reason}")
 
 
-class InvalidConfigValueError(AnnotatorConfigError, ValueError):
+class InvalidConfigValueError(VisualAnnotationConfigurationError, ValueError):
     """Raised when a config value is outside the supported domain."""
 
     def __init__(self, *, field: str, value: object, reason: str) -> None:

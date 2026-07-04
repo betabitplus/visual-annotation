@@ -15,7 +15,7 @@ Question this diagram answers: Where do defaults become runtime state?
 
 ```mermaid
 flowchart LR
-    Defaults["Python Defaults"] --> Config["AnnotatorConfig"]
+    Defaults["Python Defaults"] --> Config["VisualAnnotationConfig"]
     Config --> Install["Installed Snapshot"]
     Install --> Runtime["Handler Factory"]
 ```
@@ -31,7 +31,7 @@ flowchart LR
 ### Validation
 
 - Public DTOs validate coordinate, image, and video contracts at construction.
-- `AnnotatorConfig` normalizes color names to `supervision.Color`.
+- `VisualAnnotationConfig` normalizes color names to `supervision.Color`.
 - Runtime code consumes frozen config snapshots.
 
 ## Rules

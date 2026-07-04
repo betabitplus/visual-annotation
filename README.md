@@ -1,4 +1,4 @@
-# visual_annotation
+# visual-annotation
 
 Standalone visual annotation helpers extracted from the researcher project.
 
