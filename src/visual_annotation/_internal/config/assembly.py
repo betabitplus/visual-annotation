@@ -10,15 +10,15 @@ from __future__ import annotations
 from py_lib_runtime import get_logger
 
 from visual_annotation._api import defaults as api_defaults
-from visual_annotation._internal.config.models import AnnotatorConfig
+from visual_annotation._internal.config.models import VisualAnnotationConfig
 from visual_annotation._internal.config.validation import validate_config
 
 logger = get_logger(__name__)
 
 
-def build_default_config() -> AnnotatorConfig:
+def build_default_config() -> VisualAnnotationConfig:
     """Assemble and validate the built-in runtime config snapshot."""
-    config = AnnotatorConfig(
+    config = VisualAnnotationConfig(
         annotation_color=api_defaults.DEFAULT_ANNOTATION_COLOR_NAME,
         label_color=api_defaults.DEFAULT_LABEL_COLOR_NAME,
         box_thickness=api_defaults.DEFAULT_BOX_THICKNESS,

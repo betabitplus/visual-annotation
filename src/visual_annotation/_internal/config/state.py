@@ -12,15 +12,15 @@ from threading import RLock
 from py_lib_runtime import get_logger
 
 from visual_annotation._internal.config.assembly import build_default_config
-from visual_annotation._internal.config.models import AnnotatorConfig
+from visual_annotation._internal.config.models import VisualAnnotationConfig
 from visual_annotation._internal.config.validation import validate_config
 
-_installed_config: AnnotatorConfig = build_default_config()
+_installed_config: VisualAnnotationConfig = build_default_config()
 _config_lock = RLock()
 logger = get_logger(__name__)
 
 
-def get_config(config: AnnotatorConfig | None = None) -> AnnotatorConfig:
+def get_config(config: VisualAnnotationConfig | None = None) -> VisualAnnotationConfig:
     """Return a validated runtime configuration snapshot."""
     if config is not None:
         return config
@@ -28,10 +28,10 @@ def get_config(config: AnnotatorConfig | None = None) -> AnnotatorConfig:
         return _installed_config
 
 
-def install_config(config: object) -> AnnotatorConfig:
+def install_config(config: object) -> VisualAnnotationConfig:
     """Install a validated runtime configuration snapshot."""
-    if not isinstance(config, AnnotatorConfig):
-        msg = "install_config() expects an AnnotatorConfig instance."
+    if not isinstance(config, VisualAnnotationConfig):
+        msg = "install_config() expects a VisualAnnotationConfig instance."
         raise TypeError(msg)
 
     validate_config(config)

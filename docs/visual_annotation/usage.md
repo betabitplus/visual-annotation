@@ -22,7 +22,7 @@ flowchart LR
 
 - `annotate(image, elements)`
   Annotates a PIL image with boxes, points, masks, or page elements.
-- `AnnotatorConfig(...)`
+- `VisualAnnotationConfig(...)`
   Builds a frozen appearance config for one call or process install.
 - `install_config(config)`
   Installs a process-wide default config snapshot.
@@ -52,9 +52,9 @@ Use when:
 The caller needs a one-off color or thickness without changing process defaults.
 
 ```python
-from visual_annotation import AnnotatorConfig, VisualPoint, annotate
+from visual_annotation import VisualAnnotationConfig, VisualPoint, annotate
 
-config = AnnotatorConfig(annotation_color="BLUE", point_radius=6)
+config = VisualAnnotationConfig(annotation_color="BLUE", point_radius=6)
 response = annotate(
     image,
     [VisualPoint(label="target", coord=[0.5, 0.5])],
@@ -68,7 +68,7 @@ Use when:
 The caller wants repeated annotation calls to share one config snapshot.
 
 ```python
-from visual_annotation import AnnotatorConfig, install_config
+from visual_annotation import VisualAnnotationConfig, install_config
 
-install_config(AnnotatorConfig(annotation_color="GREEN"))
+install_config(VisualAnnotationConfig(annotation_color="GREEN"))
 ```

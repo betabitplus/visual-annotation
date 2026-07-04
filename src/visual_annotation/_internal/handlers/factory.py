@@ -14,7 +14,7 @@ from visual_annotation._api.types import (
     VisualMask,
     VisualPoint,
 )
-from visual_annotation._internal.config import AnnotatorConfig
+from visual_annotation._internal.config import VisualAnnotationConfig
 from visual_annotation._internal.handlers.base import BaseAnnotationHandler
 from visual_annotation._internal.handlers.box import BoxAnnotationHandler
 from visual_annotation._internal.handlers.mask import MaskAnnotationHandler
@@ -31,7 +31,7 @@ HANDLER_CLASS_REGISTRY: dict[type[object], type[BaseAnnotationHandler[Any]]] = {
 class AnnotationHandlerFactory:
     """Owns supervision annotator setup for one config snapshot."""
 
-    def __init__(self, config: AnnotatorConfig) -> None:
+    def __init__(self, config: VisualAnnotationConfig) -> None:
         """Create all supervision annotators from a validated config."""
         self.config = config
         self._sv_annotators = self._initialize_sv_annotators()

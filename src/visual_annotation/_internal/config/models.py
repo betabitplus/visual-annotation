@@ -21,7 +21,7 @@ from visual_annotation._internal.config.validation import coerce_color
 
 
 @dataclass(frozen=True, slots=True)
-class AnnotatorConfig:
+class VisualAnnotationConfig:
     """Owns visual appearance options for one annotation runtime snapshot.
 
     Invariant:
@@ -50,22 +50,22 @@ class AnnotatorConfig:
             coerce_color(field_name="label_color", value=self.label_color),
         )
         validate_positive_int(
-            field_name="AnnotatorConfig.box_thickness",
+            field_name="VisualAnnotationConfig.box_thickness",
             value=self.box_thickness,
         )
         validate_positive_int(
-            field_name="AnnotatorConfig.point_radius",
+            field_name="VisualAnnotationConfig.point_radius",
             value=self.point_radius,
         )
         validate_positive_float(
-            field_name="AnnotatorConfig.label_text_scale",
+            field_name="VisualAnnotationConfig.label_text_scale",
             value=self.label_text_scale,
         )
         validate_non_negative_int(
-            field_name="AnnotatorConfig.label_text_padding",
+            field_name="VisualAnnotationConfig.label_text_padding",
             value=self.label_text_padding,
         )
         validate_positive_int(
-            field_name="AnnotatorConfig.label_text_thickness",
+            field_name="VisualAnnotationConfig.label_text_thickness",
             value=self.label_text_thickness,
         )
