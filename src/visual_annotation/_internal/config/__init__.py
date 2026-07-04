@@ -15,7 +15,9 @@ What does not belong here:
 from visual_annotation._internal.config.assembly import (
     build_default_config as build_default_config,
 )
-from visual_annotation._internal.config.models import AnnotatorConfig as AnnotatorConfig
+from visual_annotation._internal.config.models import (
+    VisualAnnotationConfig as VisualAnnotationConfig,
+)
 from visual_annotation._internal.config.state import (
     get_config as get_config,
     install_config as install_config,

@@ -15,7 +15,7 @@ Question this diagram answers: How does appearance config reach supervision?
 ```mermaid
 sequenceDiagram
     participant Defaults
-    participant Config as AnnotatorConfig
+    participant Config as VisualAnnotationConfig
     participant Install as Installed Snapshot
     participant Factory as Handler Factory
     Defaults->>Config: default values
@@ -28,7 +28,7 @@ sequenceDiagram
 
 ### Construction
 
-- `AnnotatorConfig` starts from Python defaults.
+- `VisualAnnotationConfig` starts from Python defaults.
 - Color strings are normalized to `supervision.Color`.
 - Numeric values are validated before the object is stored.
 

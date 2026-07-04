@@ -8,7 +8,7 @@ Why:
 from __future__ import annotations
 
 from visual_annotation._internal.config import (
-    AnnotatorConfig as AnnotatorConfig,
+    VisualAnnotationConfig as VisualAnnotationConfig,
     get_config as get_config,
     install_config as install_config,
 )

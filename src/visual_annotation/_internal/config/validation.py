@@ -19,7 +19,7 @@ from py_lib_runtime import (
 from visual_annotation._api.errors import InvalidConfigValueError
 
 if TYPE_CHECKING:
-    from visual_annotation._internal.config.models import AnnotatorConfig
+    from visual_annotation._internal.config.models import VisualAnnotationConfig
 
 
 def coerce_color(*, field_name: str, value: object) -> sv.Color:
@@ -27,7 +27,7 @@ def coerce_color(*, field_name: str, value: object) -> sv.Color:
     if isinstance(value, sv.Color):
         return value
     if not isinstance(value, str):
-        msg = f"AnnotatorConfig.{field_name} must be a color name or sv.Color."
+        msg = f"VisualAnnotationConfig.{field_name} must be a color name or sv.Color."
         raise TypeError(msg)
 
     candidate = getattr(sv.Color, value.upper(), None)
@@ -40,27 +40,27 @@ def coerce_color(*, field_name: str, value: object) -> sv.Color:
     )
 
 
-def validate_config(config: AnnotatorConfig) -> None:
+def validate_config(config: VisualAnnotationConfig) -> None:
     """Validate one visual annotation config snapshot."""
     coerce_color(field_name="annotation_color", value=config.annotation_color)
     coerce_color(field_name="label_color", value=config.label_color)
     validate_positive_int(
-        field_name="AnnotatorConfig.box_thickness",
+        field_name="VisualAnnotationConfig.box_thickness",
         value=config.box_thickness,
     )
     validate_positive_int(
-        field_name="AnnotatorConfig.point_radius",
+        field_name="VisualAnnotationConfig.point_radius",
         value=config.point_radius,
     )
     validate_positive_float(
-        field_name="AnnotatorConfig.label_text_scale",
+        field_name="VisualAnnotationConfig.label_text_scale",
         value=config.label_text_scale,
     )
     validate_non_negative_int(
-        field_name="AnnotatorConfig.label_text_padding",
+        field_name="VisualAnnotationConfig.label_text_padding",
         value=config.label_text_padding,
     )
     validate_positive_int(
-        field_name="AnnotatorConfig.label_text_thickness",
+        field_name="VisualAnnotationConfig.label_text_thickness",
         value=config.label_text_thickness,
     )

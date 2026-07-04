@@ -9,8 +9,8 @@ from __future__ import annotations
 
 import visual_annotation
 from visual_annotation import (
-    AnnotatorConfig,
     InvalidConfigValueError,
+    VisualAnnotationConfig,
     VisualAnnotationError,
 )
 
@@ -32,10 +32,10 @@ def test_public_exception_is_package_specific() -> None:
 
 def test_public_config_exports_resolve() -> None:
     """The package exposes the shared config lifecycle."""
-    installed = visual_annotation.install_config(AnnotatorConfig())
+    installed = visual_annotation.install_config(VisualAnnotationConfig())
 
-    assert visual_annotation.get_config().__class__ is AnnotatorConfig
-    assert installed.__class__ is AnnotatorConfig
+    assert visual_annotation.get_config().__class__ is VisualAnnotationConfig
+    assert installed.__class__ is VisualAnnotationConfig
 
 
 def test_invalid_config_error_is_public() -> None:

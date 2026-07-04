@@ -17,8 +17,8 @@ from py_lib_tooling import get_test_data_path
 from visual_annotation import (
     AnnotationRequest,
     AnnotationResponse,
-    AnnotatorConfig,
     PageElement,
+    VisualAnnotationConfig,
     VisualBox,
     VisualMask,
     VisualPoint,
@@ -53,9 +53,9 @@ def make_annotator_config(
     label_text_scale: float = 0.5,
     label_text_padding: int = 5,
     label_text_thickness: int = 1,
-) -> AnnotatorConfig:
+) -> VisualAnnotationConfig:
     """Return a validated test config."""
-    return AnnotatorConfig(
+    return VisualAnnotationConfig(
         annotation_color=annotation_color,
         label_color=label_color,
         box_thickness=box_thickness,

@@ -14,7 +14,7 @@ from py_lib_runtime import get_logger, log_operation_duration, preview_exception
 from visual_annotation._api.errors import AnnotatorError
 from visual_annotation._api.types import AnnotationRequest, AnnotationResponse
 from visual_annotation._internal.annotator import Annotator
-from visual_annotation._internal.config import AnnotatorConfig, get_config
+from visual_annotation._internal.config import VisualAnnotationConfig, get_config
 from visual_annotation._internal.handlers.factory import AnnotationHandlerFactory
 from visual_annotation._internal.resolver import AnnotationTaskResolver
 
@@ -26,7 +26,7 @@ class VisualAnnotationService:
 
     def __init__(
         self,
-        config: AnnotatorConfig,
+        config: VisualAnnotationConfig,
         *,
         resolver: AnnotationTaskResolver | None = None,
     ) -> None:
@@ -86,7 +86,7 @@ class VisualAnnotationService:
 def annotate_request(
     request: AnnotationRequest,
     *,
-    config: AnnotatorConfig | None = None,
+    config: VisualAnnotationConfig | None = None,
     correlation_id: str | None = None,
 ) -> AnnotationResponse:
     """Run one public request through a configured service."""

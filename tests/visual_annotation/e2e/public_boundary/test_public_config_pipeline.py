@@ -11,7 +11,7 @@ from __future__ import annotations
 import pytest
 from py_lib_tooling import console
 
-from visual_annotation import AnnotatorConfig, get_config, install_config
+from visual_annotation import VisualAnnotationConfig, get_config, install_config
 
 pytestmark = [
     pytest.mark.e2e_contract,
@@ -23,9 +23,9 @@ pytestmark = [
 # =============================================================================
 
 
-def run_pipeline() -> AnnotatorConfig:
+def run_pipeline() -> VisualAnnotationConfig:
     """Run the public config install/read flow."""
-    return install_config(AnnotatorConfig())
+    return install_config(VisualAnnotationConfig())
 
 
 # =============================================================================
@@ -33,7 +33,7 @@ def run_pipeline() -> AnnotatorConfig:
 # =============================================================================
 
 
-def assert_public_config_response(config: AnnotatorConfig) -> None:
+def assert_public_config_response(config: VisualAnnotationConfig) -> None:
     """Assert the public config snapshot is the installed runtime snapshot."""
     assert get_config() is config
 

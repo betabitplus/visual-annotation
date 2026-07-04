@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from collections.abc import Iterable
 
-from visual_annotation._api.config import AnnotatorConfig
+from visual_annotation._api.config import VisualAnnotationConfig
 from visual_annotation._api.types import (
     AnnotatableElement,
     AnnotationRequest,
@@ -27,7 +27,7 @@ def annotate(
     image: ImageSchema,
     elements: Iterable[AnnotatableElement],
     *,
-    config: AnnotatorConfig | None = None,
+    config: VisualAnnotationConfig | None = None,
     correlation_id: str | None = None,
 ) -> AnnotationResponse:
     """Annotate an image with visual elements."""

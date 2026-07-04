@@ -18,9 +18,12 @@ from __future__ import annotations
 from importlib.metadata import PackageNotFoundError, version
 
 from visual_annotation._api.annotation import annotate
-from visual_annotation._api.config import AnnotatorConfig, get_config, install_config
+from visual_annotation._api.config import (
+    VisualAnnotationConfig,
+    get_config,
+    install_config,
+)
 from visual_annotation._api.errors import (
-    AnnotatorConfigError,
     AnnotatorError,
     BboxCoordinatesOutOfRangeError,
     BboxInvalidLengthError,
@@ -39,6 +42,7 @@ from visual_annotation._api.errors import (
     VideoFileNotFoundError,
     VideoUrlInvalidError,
     VideoValidationError,
+    VisualAnnotationConfigurationError,
     VisualAnnotationError,
 )
 from visual_annotation._api.media import format_video_offset
@@ -75,8 +79,6 @@ __all__ = [
     "AnnotatableElement",
     "AnnotationRequest",
     "AnnotationResponse",
-    "AnnotatorConfig",
-    "AnnotatorConfigError",
     "AnnotatorError",
     "BboxCoordinatesOutOfRangeError",
     "BboxInvalidLengthError",
@@ -102,6 +104,8 @@ __all__ = [
     "VideoUrlInvalidError",
     "VideoUrlSchema",
     "VideoValidationError",
+    "VisualAnnotationConfig",
+    "VisualAnnotationConfigurationError",
     "VisualAnnotationError",
     "VisualBox",
     "VisualMask",

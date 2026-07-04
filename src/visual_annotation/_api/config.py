@@ -9,7 +9,7 @@ from __future__ import annotations
 
 # pyright: reportUnusedImport=false
 from visual_annotation._internal import (  # noqa: F401
-    AnnotatorConfig,
+    VisualAnnotationConfig,
     get_config,
     install_config,
 )
