@@ -6,6 +6,13 @@ All notable changes to this project will be documented in this file.
 
 - Initial visual annotation library baseline.
 
+## v0.4.6 (2026-07-04)
+
+### Fix
+
+- promote repository rename sync
+- sync repository rename references
+
 ## v0.4.5 (2026-06-19)
 
 ### Fix

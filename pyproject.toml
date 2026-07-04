@@ -10,7 +10,7 @@ requires = [ "setuptools>=82.0.1" ]
 # ==============================================================================
 [project]
 name = "visual-annotation"
-version = "0.4.5"
+version = "0.4.6"
 description = "Standalone visual annotation helpers extracted from researcher."
 readme = "README.md"
 keywords = [ "annotation", "computer-vision", "images", "python" ]
