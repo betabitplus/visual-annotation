@@ -1565,7 +1565,7 @@ wheels = [
 [[package]]
 name = "py-lib-runtime"
 version = "0.11.1"
-source = { git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-runtime&rev=v0.29.3#91596c7ce20f001c564e7a460eb6b7f460b6d920" }
+source = { git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-runtime&rev=v0.29.4#2563b0011caa1f452561916abee7147511cc8e93" }
 dependencies = [
     { name = "structlog" },
 ]
@@ -1573,7 +1573,7 @@ dependencies = [
 [[package]]
 name = "py-lib-tooling"
 version = "0.27.0"
-source = { git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-tooling&rev=v0.29.3#91596c7ce20f001c564e7a460eb6b7f460b6d920" }
+source = { git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-tooling&rev=v0.29.4#2563b0011caa1f452561916abee7147511cc8e93" }
 dependencies = [
     { name = "copier" },
     { name = "ipython" },
@@ -2449,7 +2449,7 @@ requires-dist = [
     { name = "numpy" },
     { name = "opencv-python", specifier = ">=4.5.5.64" },
     { name = "pillow" },
-    { name = "py-lib-runtime", git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-runtime&rev=v0.29.3" },
+    { name = "py-lib-runtime", git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-runtime&rev=v0.29.4" },
     { name = "supervision" },
 ]
 
@@ -2471,7 +2471,7 @@ dev = [
     { name = "pillow", specifier = ">=12.2" },
     { name = "pip-audit", specifier = ">=2.10.1" },
     { name = "pre-commit", specifier = ">=4.6.0" },
-    { name = "py-lib-tooling", git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-tooling&rev=v0.29.3" },
+    { name = "py-lib-tooling", git = "https://github.com/betabitplus/py-lib-starter.git?subdirectory=packages%2Fpy-lib-tooling&rev=v0.29.4" },
     { name = "pyright", specifier = ">=1.1.410" },
     { name = "pytest", specifier = ">=9.1.0" },
     { name = "pytest-cov", specifier = ">=7.1.0" },
