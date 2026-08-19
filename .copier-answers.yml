@@ -10,8 +10,6 @@ devcontainer_apt_packages:
 e2e_slices:
 -   name: public-boundary
     path: tests/visual_annotation/e2e/public_boundary
--   name: examples
-    path: tests/visual_annotation/e2e/examples
 -   name: box-annotation
     path: tests/visual_annotation/e2e/box_annotation
 -   name: point-annotation
