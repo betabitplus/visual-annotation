@@ -26,7 +26,7 @@ Examples:
 from __future__ import annotations
 
 import pytest
-from py_lib_tooling import console, image_changed, save_test_output_image
+from py_lib_testkit import console, image_changed, save_test_output_image
 
 from tests.visual_annotation.support.builders import (
     load_test_image,

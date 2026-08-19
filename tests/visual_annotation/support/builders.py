@@ -12,7 +12,7 @@ from pathlib import Path
 import numpy as np
 import supervision as sv
 from PIL import Image, ImageDraw
-from py_lib_tooling import get_test_data_path
+from py_lib_testkit import get_test_data_path
 
 from visual_annotation import (
     AnnotationRequest,

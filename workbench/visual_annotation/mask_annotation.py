@@ -27,7 +27,7 @@ import cv2
 import numpy as np
 import supervision as sv
 from PIL import Image, ImageDraw
-from py_lib_tooling import console, get_repo_root, get_workbench_output_path
+from py_lib_testkit import console, get_repo_root, get_workbench_output_path
 
 # =============================================================================
 # Scenario
