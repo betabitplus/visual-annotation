@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.7](https://github.com/betabitplus/visual-annotation/compare/v0.4.6...v0.4.7) (2026-08-23)
+
+
+### Miscellaneous Chores
+
+* release 0.4.7 ([#58](https://github.com/betabitplus/visual-annotation/issues/58)) ([fa21889](https://github.com/betabitplus/visual-annotation/commit/fa218892f4d1ee5d20e4a788205d559914a2ea62))
+
 ## 0.1.0
 
 - Initial visual annotation library baseline.
