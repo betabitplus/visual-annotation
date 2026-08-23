@@ -1,7 +1,7 @@
 ---
 name: docs-index
 doc_type: index
-description: Index of project docs. Use when you need to find package architecture, usage, or verification notes.
+description: Index of project docs. Use when you need to find package architecture, dependency, or verification notes.
 ---
 
 # Docs
@@ -15,4 +15,4 @@ evidence.
 
 - [visual_annotation/README.md](visual_annotation/README.md)
   Indexes the visual annotation package docs.
-  Use it to find architecture, usage, dependency, and verification notes.
+  Use it to find architecture, dependency, and verification notes.
