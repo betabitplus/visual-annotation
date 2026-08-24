@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.9](https://github.com/betabitplus/visual-annotation/compare/v0.4.8...v0.4.9) (2026-08-24)
+
+
+### Bug Fixes
+
+* optimize automatic docs rebuilds ([#65](https://github.com/betabitplus/visual-annotation/issues/65)) ([da5d0bf](https://github.com/betabitplus/visual-annotation/commit/da5d0bfd53803b6d28785cc0bb025fe7549977e2))
+
 ## [0.4.8](https://github.com/betabitplus/visual-annotation/compare/v0.4.7...v0.4.8) (2026-08-24)
 
 
