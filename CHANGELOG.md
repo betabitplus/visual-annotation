@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.8](https://github.com/betabitplus/visual-annotation/compare/v0.4.7...v0.4.8) (2026-08-24)
+
+
+### Bug Fixes
+
+* enable automatic hosted live docs ([#61](https://github.com/betabitplus/visual-annotation/issues/61)) ([5c6f060](https://github.com/betabitplus/visual-annotation/commit/5c6f060b9ebbdee068c3677fef97980bdf0f838d))
+
 ## [0.4.7](https://github.com/betabitplus/visual-annotation/compare/v0.4.6...v0.4.7) (2026-08-23)
 
 
