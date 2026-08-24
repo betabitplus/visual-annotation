@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.10](https://github.com/betabitplus/visual-annotation/compare/v0.4.9...v0.4.10) (2026-08-24)
+
+
+### Bug Fixes
+
+* simplify examples gallery ([#68](https://github.com/betabitplus/visual-annotation/issues/68)) ([c7e7c56](https://github.com/betabitplus/visual-annotation/commit/c7e7c56578411560790efc01840a5ab8f9523cfd))
+
 ## [0.4.9](https://github.com/betabitplus/visual-annotation/compare/v0.4.8...v0.4.9) (2026-08-24)
 
 
