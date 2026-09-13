@@ -1,4 +1,4 @@
-_commit: v1.8.8
+_commit: v1.25.2
 _src_path: https://github.com/betabitplus/ternforge-template-py-library.git
 author_email: 8123085+betabitplus@users.noreply.github.com
 author_name: betabitplus
@@ -7,17 +7,6 @@ config_class_name: VisualAnnotationConfig
 copyright_year: '2026'
 devcontainer_apt_packages:
     libgl1: 1.7.0-1+b2
-e2e_slices:
--   name: public-boundary
-    path: tests/visual_annotation/e2e/public_boundary
--   name: box-annotation
-    path: tests/visual_annotation/e2e/box_annotation
--   name: point-annotation
-    path: tests/visual_annotation/e2e/point_annotation
--   name: mask-annotation
-    path: tests/visual_annotation/e2e/mask_annotation
--   name: page-element-compatibility
-    path: tests/visual_annotation/e2e/page_element_compatibility
 env_prefix: VISUAL_ANNOTATION
 error_class_name: VisualAnnotationError
 github_owner: betabitplus

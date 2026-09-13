@@ -40,6 +40,8 @@ urls.Repository = "https://github.com/betabitplus/visual-annotation"
 
 [dependency-groups]
 dev = [
+  # Test runner, plugins, and retained execution evidence
+  "allure-pytest>=2.16,<3",
   # Security auditing
   "bandit>=1.9.4",
   "check-manifest>=0.51",
@@ -56,6 +58,7 @@ dev = [
   "interrogate>=1.7",
   # Interactive development
   "ipykernel>=7.3.0",
+  "ipytest>=0.14.2,<0.15",
   "ipython>=9.14.1",
   "mdformat>=0.7.22",
   "mdformat-beautysh>=1.0.0",
@@ -72,8 +75,8 @@ dev = [
   "py-lib-testkit",
   "pyproject-fmt>=2.23.0",
   "pyright>=1.1.410",
-  # Test runner and plugins
   "pytest>=9.1.0",
+  "pytest-bdd>=8.1,<9",
   "pytest-cov>=7.1.0",
   "pytest-randomly>=4.1.0",
   "pytest-recording>=0.13.4",
@@ -91,11 +94,7 @@ dev = [
 ]
 docs = [
   "matplotlib>=3.11.1",
-  "myst-parser>=4.0.1",
-  "pydata-sphinx-theme>=0.20.0",
-  "sphinx>=8.2.3",
-  "sphinx-gallery>=0.21.0",
-  "sphinxcontrib-mermaid>=2.1.0",
+  "ternforge-docops>=0.14,<0.15",
 ]
 
 [tool.setuptools]
@@ -109,9 +108,10 @@ package-dir."" = "src"
 
 [tool.uv]
 required-version = "==0.12.5"
-sources.py-lib-policy = { git = "https://github.com/betabitplus/ternforge-tooling-py-policy.git", tag = "v1.2.0" }
-sources.py-lib-runtime = { git = "https://github.com/betabitplus/ternforge-tooling-py-runtime.git", tag = "v1.1.6" }
-sources.py-lib-testkit = { git = "https://github.com/betabitplus/ternforge-tooling-py-testkit.git", tag = "v2.0.2" }
+sources.py-lib-policy = { git = "https://github.com/betabitplus/ternforge-tooling-py-policy.git", tag = "v2.1.1" }
+sources.py-lib-runtime = { git = "https://github.com/betabitplus/ternforge-tooling-py-runtime.git", tag = "v1.2.1" }
+sources.py-lib-testkit = { git = "https://github.com/betabitplus/ternforge-tooling-py-testkit.git", tag = "v2.8.0" }
+sources.ternforge-docops = { git = "https://github.com/betabitplus/ternforge-tooling-docops.git", tag = "v0.14.2" }
 
 # ---------------- Ruff configuration ----------------
 [tool.ruff]
@@ -119,6 +119,8 @@ sources.py-lib-testkit = { git = "https://github.com/betabitplus/ternforge-tooli
 target-version = "py313"
 # Match Black's defaults (line length = 88).
 line-length = 88
+# Captured experiment notebooks are evidence documents; lint their owned source instead.
+extend-exclude = [ "experiments/**/report/*.ipynb" ]
 # Enable auto-fixes for safe rules (`ruff check --fix`).
 fix = true
 # Format Python snippets inside docstrings.
@@ -196,7 +198,6 @@ lint.select = [
   "W",
   "YTT",
 ]
-# Ignore rules that are too noisy or conflict with formatter/project style.
 lint.ignore = [
   "COM812",  # Trailing comma (conflicts with formatter)
   "ISC001",  # Implicit string concatenation (conflicts with formatter)
@@ -212,6 +213,20 @@ lint.per-file-ignores."examples/*" = [
   "D415",   # Gallery titles are headings, not prose sentences.
   "ERA001", # Sphinx-Gallery uses code-like configuration comments.
   "T20",    # Examples may print their public API output.
+]
+lint.per-file-ignores."experiments/*" = [
+  "ANN",     # Experiment probes do not need full typing
+  "C901",    # Provider/lab probes may keep linear scenario orchestration
+  "D",       # Experiment probes can keep lightweight docs
+  "E501",    # Preserve literal prompts and captured source without churn
+  "EM",      # Direct contextual failure messages are acceptable in probes
+  "PERF",    # Clarity matters more than micro-optimizing one-off probes
+  "PLR0912", # Explicit experiment branches may stay linear
+  "PLR0915", # Complete probe flows may remain procedural
+  "PLR2004", # Allow scenario constants
+  "S101",    # Allow assert statements
+  "T20",     # Allow print statements
+  "TRY003",  # Descriptive experiment exceptions may stay inline
 ]
 # Scripts are utility code; keep them readable without production strictness.
 lint.per-file-ignores."scripts/*" = [
@@ -232,19 +247,15 @@ lint.per-file-ignores."tests/*" = [
   "PLR2004", # Allow magic values in assertions
   "PT012",   # Allow multi-statement pytest.raises blocks
   "S101",    # Allow assert statements
-  "T20",     # Allow print statements in direct-runnable e2e modules
+  "T20",     # Allow print statements in test diagnostics
   "TRY003",  # Allow long exception messages
 ]
-lint.per-file-ignores."workbench/*" = [
-  "ANN",     # Manual probes do not need full typing
-  "D",       # Manual probes can keep lightweight docs
-  "PLR2004", # Allow scenario constants
-  "S101",    # Allow assert statements
-  "T20",     # Allow print statements
-]
+# Ignore rules that are too noisy or conflict with formatter/project style.
+lint.task-tags = [ "@impl", "FIXME", "TODO", "XXX" ]
 lint.flake8-tidy-imports.ban-relative-imports = "all"
 lint.isort.combine-as-imports = true
 lint.isort.known-first-party = [ "visual_annotation" ]
+lint.pycodestyle.ignore-overlong-task-comments = true
 # Choose docstring convention: "google", "numpy", or "pep257".
 lint.pydocstyle.convention = "google"
 
@@ -263,8 +274,12 @@ ignore-nested-functions = false
 ignore-nested-classes = false
 ignore-setters = false
 ignore-overloaded-functions = true
+<<<<<<< before updating
 ignore-regex = [ "^wrapper$" ]
 exclude = [ ".agents", "docs", "scripts", "tests" ]
+=======
+exclude = [ ".agents", "docs", "experiments", "scripts", "tests" ]
+>>>>>>> after updating
 color = true
 verbose = 1
 quiet = false
@@ -277,6 +292,7 @@ ignore = [
   ".agents/**",
   ".copier-answers.yml",
   ".devcontainer/**",
+  ".gherkin-lintrc",
   ".git/**",
   ".github/**",
   ".gitleaks.toml",
@@ -287,11 +303,14 @@ ignore = [
   ".pytest_cache/**",
   ".release-please-manifest.json",
   ".ruff_cache/**",
+  ".ternforge/**",
   ".venv/**",
   ".vscode/**",
   "__pycache__/**",
   "docs/**",
   "examples/**",
+  "experiments/**",
+  "features/**",
   "plan/**",
   "release-please-config.json",
   "scripts/**",
@@ -299,7 +318,6 @@ ignore = [
   "tests/**",
   "typos.toml",
   "uv.lock",
-  "workbench/**",
 ]
 
 # ---------------- Deptry (dependency hygiene) ----------------
@@ -308,9 +326,9 @@ extend_exclude = [
   ".agents",
   ".venv",
   "examples",
+  "experiments",
   "scripts",
   "tests",
-  "workbench",
 ]
 # ---------------- Bandit (security) ----------------
 per_rule_ignores.DEP002 = [
@@ -343,6 +361,8 @@ exclude = [
   "docs/_build",
   "docs/auto_examples",
   "docs/generated",
+  # Standalone experiment capsules own separate environments and import roots.
+  "experiments",
   # Utility and verification code are checked by Ruff/pytest instead.
   "scripts",
   "tests",
@@ -384,6 +404,7 @@ src.exclude = [
   "docs/_build/",
   "docs/auto_examples/",
   "docs/generated/",
+  "experiments/",
   "scripts/",
   "tests/",
 ]
@@ -411,20 +432,22 @@ ini_options.norecursedirs = [
   "docs/_build",
   "docs/auto_examples",
   "docs/generated",
+  "experiments",
   "scripts",
 ]
 # ---------------- Pytest configuration ----------------
-ini_options.addopts = "--cov --cov-report=term-missing"
+ini_options.addopts = "--cov --cov-report=term-missing --strict-markers"
 ini_options.markers = [
-  "e2e_behavior: end-to-end behavior tests",
-  "e2e_contract: end-to-end public contract tests",
   "hermetic: marks tests that run fully offline",
   "slow: marks tests that are slow and should be skipped in fast runs",
   "vcr: marks tests that use VCR.py for HTTP recording/replay",
 ]
+ini_options.bdd_features_base_dir = "features"
+ini_options.ternforge_traceability = true
 
 [tool.coverage]
 run.source = [ "src" ]
+run.core = "ctrace"
 # ---------------- pytest coverage ----------------
 report.fail_under = 1
 
@@ -450,7 +473,6 @@ root_packages = [
   "examples",
   "visual_annotation",
   "tests",
-  "workbench",
 ]
 include_external_packages = true
 
@@ -479,6 +501,7 @@ forbidden_modules = [ "visual_annotation._api.annotation" ]
 as_packages = false
 
 [[tool.importlinter.contracts]]
+<<<<<<< before updating
 name = "Private core must stay layered"
 id = "private-core-layering"
 type = "layers"
@@ -501,14 +524,16 @@ ignore_imports = [
 [[tool.importlinter.contracts]]
 name = "Private core is only imported through product code and explicit private-core test layers"
 id = "private-core-approved-boundaries"
+=======
+name = "Private implementation is only imported through product code and tests"
+id = "private-implementation-approved-boundaries"
+>>>>>>> after updating
 type = "protected"
 protected_modules = [ "visual_annotation._internal" ]
 allowed_importers = [
   "visual_annotation._api",
   "visual_annotation._internal",
-  "tests.visual_annotation.integration",
-  "tests.visual_annotation.property_based.internal",
-  "tests.visual_annotation.unit",
+  "tests.visual_annotation",
 ]
 
 [[tool.importlinter.contracts]]
@@ -520,6 +545,7 @@ forbidden_modules = [ "visual_annotation._internal.**" ]
 allow_indirect_imports = true
 
 [[tool.importlinter.contracts]]
+<<<<<<< before updating
 name = "Visual annotation public-contract verification modules must not import private core"
 id = "visual-annotation-public-contract-private-core"
 type = "forbidden"
@@ -545,4 +571,23 @@ id = "visual-annotation-shipped-package-workbench-boundary"
 type = "forbidden"
 source_modules = [ "visual_annotation" ]
 forbidden_modules = [ "workbench" ]
+=======
+name = "Visual Annotation examples must use the public package API"
+id = "visual-annotation-examples-public-api"
+type = "forbidden"
+source_modules = [ "examples.visual_annotation" ]
+forbidden_modules = [
+  "visual_annotation._api",
+  "visual_annotation._internal",
+  "src",
+]
+allow_indirect_imports = true
+
+[[tool.importlinter.contracts]]
+name = "Visual Annotation shipped package must not import examples"
+id = "visual-annotation-shipped-package-examples-boundary"
+type = "forbidden"
+source_modules = [ "visual_annotation" ]
+forbidden_modules = [ "examples" ]
+>>>>>>> after updating
 allow_indirect_imports = true
